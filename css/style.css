@@ -1,0 +1,218 @@
+:root {
+    --cor-vermelho-escuro: #581a1a;
+    --cor-vermelho-claro: #af1414;
+    --cor-verde: #00ff00;
+    --cor-amarelo-claro: #beb932;
+    --cor-amarelo-escuro: #666312;
+    --cor-branco: #f0f0f0;
+    --cor-cinza-claro: #aaaaaa;
+    --cor-cinza-escuro: #444444;
+    --cor-preto: #0c0c0c;
+    --curvatura-da-borda: 10px;
+}
+
+body {
+    color: var(--cor-preto);
+    font-size: 100%;
+}
+
+#relogio {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(5, 1.1fr) 0.75fr 0.75fr;
+    grid-template-rows: 1fr 13% 13% 1fr;
+}
+
+.fundo-vermelho {
+    grid-area: 1 / 1 / 3/ 8;
+    background-color: var(--cor-vermelho-claro);
+}
+
+.time-vermelho_pontuacao {grid-area: 1 / 6 / 2 / 8;}
+.time-branco_pontuacao   {grid-area: 4 / 6 / 5 / 8;}
+
+.time-vermelho_pontuacao,
+.time-branco_pontuacao {
+    background-color: var(--cor-preto);
+    margin: 1vw;
+    border-radius: var(--curvatura-da-borda);
+    color: var(--cor-amarelo-claro);
+    font-size: 4em;
+}
+
+.time-vermelho_nome {
+    grid-area: 2 / 3 / 3 / 8;
+    background-color: var(--cor-vermelho-escuro);
+    margin: 1vw 1vw 0 1vw;
+    border-radius:
+    var(--curvatura-da-borda) 
+    var(--curvatura-da-borda) 
+    0 
+    0;
+    color: var(--cor-branco);
+}
+
+.fundo-branco {
+    grid-area: 3 / 1 / 5 / 8;
+    background-color: var(--cor-branco);
+}
+
+.time-branco_nome {
+    grid-area: 3 / 3 / 4 / 8;
+    background-color: var(--cor-cinza-claro);
+    margin: 0 1vw 1vw 1vw;
+    border-radius:
+    0
+    0
+    var(--curvatura-da-borda)
+    var(--curvatura-da-borda);
+    color: var(--cor-vermelho-claro);
+}
+
+.contador-regressivo_wrapper {
+    grid-area: 2 / 1 / 4 / 3;
+    background-color: var(--cor-preto);
+    margin: 1vw;
+    border-radius: var(--curvatura-da-borda);
+}
+
+#contador-regressivo {
+    color: var(--cor-amarelo-escuro);
+    font-size: 2.7em;
+}
+
+#contador-regressivo.ativo {
+    color: var(--cor-amarelo-claro);
+}
+
+.contador-regressivo_wrapper,
+.time-vermelho_pontuacao,
+.time-branco_pontuacao,
+.time-vermelho_nome,
+.time-branco_nome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+}
+
+#jogador-vermelho-1 {grid-area: 1 / 1 / 2 / 2;}
+#jogador-vermelho-3 {grid-area: 1 / 2 / 2 / 3;}
+#jogador-vermelho-5 {grid-area: 1 / 3 / 2 / 4;}
+#jogador-vermelho-7 {grid-area: 1 / 4 / 2 / 5;}
+#jogador-vermelho-9 {grid-area: 1 / 5 / 2 / 6;}
+
+#jogador-branco-2  {grid-area: 4 / 1 / 5 / 2;}
+#jogador-branco-4  {grid-area: 4 / 2 / 5 / 3;}
+#jogador-branco-6  {grid-area: 4 / 3 / 5 / 4;}
+#jogador-branco-8  {grid-area: 4 / 4 / 5 / 5;}
+#jogador-branco-10 {grid-area: 4 / 5 / 5 / 6;}
+
+.time-vermelho_jogador {
+    --tela-cor-fundo: var(--cor-vermelho-escuro);
+    --cor-texto: var(--cor-branco);
+    --cor-marcador: var(--cor-branco);
+    --cor-estado-jogador: var(--cor-preto);
+}
+
+.time-branco_jogador {
+    --tela-cor-fundo: var(--cor-cinza-claro);
+    --cor-texto: var(--cor-vermelho-claro);
+    --cor-marcador: var(--cor-vermelho-claro);
+    --cor-estado-jogador: var(--cor-cinza-escuro);
+}
+
+.time-vermelho_jogador,
+.time-branco_jogador {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    padding: 1vw;
+}
+
+.jogador_numero {
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+.jogador_numero,
+.jogador_estado {
+    grid-column: 1 / 3;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.jogador_pontuacao {
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 3em;
+    text-align: center;
+    color: var(--cor-texto);
+    background-color: var(--cor-preto);
+}
+
+.time-vermelho_jogador .jogador_pontuacao {
+    border-radius: var(--curvatura-da-borda) 0 0 0;
+}
+
+.time-branco_jogador .jogador_pontuacao {
+    border-radius: 0 0 0 var(--curvatura-da-borda);
+}
+
+.jogador_avanco-wrapper {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--tela-cor-fundo);
+}
+
+.jogador_avanco {
+    place-self: center;
+}
+
+.jogador_avanco svg{
+    fill: var(--cor-marcador);
+    width: 6px;
+    height: 6px;
+}
+
+.time-vermelho_jogador .jogador_avanco-wrapper {
+    border-radius: 0 var(--curvatura-da-borda) 0 0;
+}
+
+.time-branco_jogador .jogador_avanco-wrapper {
+    border-radius: 0 0 var(--curvatura-da-borda) 0;
+}
+
+.jogador_avanco.ativo svg{
+    fill: var(--cor-verde);
+}
+
+.jogador_estado {
+    background-color: var(--tela-cor-fundo);
+    color: var(--cor-estado-jogador);
+}
+
+.time-vermelho_jogador .jogador_estado {
+    border-radius: 0 0 var(--curvatura-da-borda) var(--curvatura-da-borda);
+}
+
+.time-branco_jogador .jogador_estado {
+    border-radius: var(--curvatura-da-borda) var(--curvatura-da-borda) 0 0;
+}
+
+.jogador-fora {
+    color: var(--cor-amarelo-claro);
+    text-shadow: 
+    -1px  0px 2px var(--cor-preto),
+     0px  1px 2px var(--cor-preto),
+     1px  0px 2px var(--cor-preto),
+     0px -1px 2px var(--cor-preto);
+}
