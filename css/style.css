@@ -97,17 +97,17 @@ body {
     padding: 1vw;
 }
 
-#jogador-vermelho-1 {grid-area: 1 / 1 / 2 / 2;}
-#jogador-vermelho-3 {grid-area: 1 / 2 / 2 / 3;}
-#jogador-vermelho-5 {grid-area: 1 / 3 / 2 / 4;}
-#jogador-vermelho-7 {grid-area: 1 / 4 / 2 / 5;}
-#jogador-vermelho-9 {grid-area: 1 / 5 / 2 / 6;}
+#jogador-1 {grid-area: 1 / 1 / 2 / 2;}
+#jogador-3 {grid-area: 1 / 2 / 2 / 3;}
+#jogador-5 {grid-area: 1 / 3 / 2 / 4;}
+#jogador-7 {grid-area: 1 / 4 / 2 / 5;}
+#jogador-9 {grid-area: 1 / 5 / 2 / 6;}
 
-#jogador-branco-2  {grid-area: 4 / 1 / 5 / 2;}
-#jogador-branco-4  {grid-area: 4 / 2 / 5 / 3;}
-#jogador-branco-6  {grid-area: 4 / 3 / 5 / 4;}
-#jogador-branco-8  {grid-area: 4 / 4 / 5 / 5;}
-#jogador-branco-10 {grid-area: 4 / 5 / 5 / 6;}
+#jogador-2  {grid-area: 4 / 1 / 5 / 2;}
+#jogador-4  {grid-area: 4 / 2 / 5 / 3;}
+#jogador-6  {grid-area: 4 / 3 / 5 / 4;}
+#jogador-8  {grid-area: 4 / 4 / 5 / 5;}
+#jogador-10 {grid-area: 4 / 5 / 5 / 6;}
 
 .time-vermelho_jogador {
     --tela-cor-fundo: var(--cor-vermelho-escuro);
@@ -138,7 +138,36 @@ body {
 
 .jogador_botoes {
     grid-column: 3;
-    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw 0vw;
+    padding: 1vw 0 1vw 1vw;
+}
+
+.time-vermelho_jogador .jogador_botoes {
+    grid-row: 2 / 4;
+}
+
+.time-branco_jogador .jogador_botoes {
+    grid-row: 1 / 3;
+}
+
+.aumenta_pontuacao,
+.diminui_pontuacao {
+    flex-grow: 1;
+    border-radius: var(--curvatura-da-borda);
+}
+
+.time-vermelho_jogador .aumenta_pontuacao, 
+.time-vermelho_jogador .diminui_pontuacao {
+    background-color: var(--tela-cor-fundo);
+    color: var(--cor-texto);
+}
+
+.time-branco_jogador .aumenta_pontuacao, 
+.time-branco_jogador .diminui_pontuacao {
+    background-color: var(--tela-cor-fundo);
+    color: var(--cor-texto);
 }
 
 .jogador_numero,
