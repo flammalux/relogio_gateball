@@ -1,7 +1,7 @@
 class Jogador {
-    constructor () {
-        this.idJogador = "jogador-vermelho-1";
-        this.numeroJogador = 0;
+    constructor (id, numero) {
+        this.idJogador = id;
+        this.numeroJogador = numero;
         this.pontuacaoJogador = 0;
         this.avancoJogador = 0;
         this.situacaoJogador = 0;
@@ -39,12 +39,12 @@ class Jogador {
     }
 
     AlteraPontuacao() {
-        const areaTexto = document.querySelector("#jogador-vermelho-1").querySelector('.jogador_pontuacao');
+        const areaTexto = document.querySelector("#" + this.idJogador).querySelector('.jogador_pontuacao');
         areaTexto.innerHTML = this.pontuacaoJogador;
     }
 
     AlteraAvanco() {
-        const arrayAvanco = document.querySelector("#jogador-vermelho-1").querySelectorAll(".jogador_avanco");
+        const arrayAvanco = document.querySelector("#" + this.idJogador).querySelectorAll(".jogador_avanco");
         switch (this.avancoJogador) {
             case 1:
                 arrayAvanco[0].classList.add("ativo");
@@ -84,4 +84,3 @@ class Jogador {
     }
 
 }
-
