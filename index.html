@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./javascript/main.js" defer></script>
+    <script src="./javascript/Jogador.js"></script>
 </head>
 <body>
     <div id="relogio">
@@ -30,6 +31,10 @@
                 <div class="jogador_avanco"><svg><circle cx="3" cy="3" r="2.5"/></svg></div>
                 <div class="jogador_avanco"><svg><circle cx="3" cy="3" r="2.5"/></svg></div>
                 <div class="jogador_avanco"><svg><circle cx="3" cy="3" r="2.5"/></svg></div>
+            </div>
+            <div class="jogador_botoes">
+                <button class="aumenta_pontuacao" onclick="jogador1.AumentarPontuacao()">+</button>
+                <button class="diminui_pontuacao" onclick="jogador1.DiminuirPontuacao()">-</button>
             </div>
             <span class="jogador_estado">out</span>
         </div>
