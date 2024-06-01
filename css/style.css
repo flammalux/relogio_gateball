@@ -230,8 +230,9 @@ body {
 }
 
 .jogador_estado {
-    background-color: var(--tela-cor-fundo);
+    font-size: 1em;
     color: var(--cor-estado-jogador);
+    background-color: var(--tela-cor-fundo);
 }
 
 .time-vermelho_jogador .jogador_estado {
