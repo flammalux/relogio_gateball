@@ -1,6 +1,36 @@
 const relogioGateball = document.querySelector('#relogio');
+const temporizador = document.querySelector('#contador-regressivo');
 const numeroDeJogadores = 10;
 const jogadores = new Array();
+
+let tempoDaPartida = 1;
+
+// window.customElements.define('elemento-contador', ContadorRegressivo);
+const contador = new ContadorRegressivo(tempoDaPartida);
+
+// const mutationObserver = new MutationObserver ((alteracoes) => {
+//     console.log(alteracoes);
+// });
+
+// mutationObserver.observe(contador, { attributes: true, subtree: true })
+
+temporizador.innerHTML = `${tempoDaPartida}:00`;
+
+temporizador.addEventListener('click', () => {
+    temporizador.classList.toggle('ativo');
+    
+    if (temporizador.classList.contains('ativo')) {
+        contador.IniciaContagem()
+        
+        if (contador.fim == true) {
+            contador.ResetaContagem();
+            temporizador.classList.toggle('ativo');
+        }
+    }else {
+        contador.PausaContagem();
+    }
+});
+
 
 for (let i = 1; i <= numeroDeJogadores; i++) {
     //este laço cria os jogadores e as divs desses jogadores
@@ -61,7 +91,13 @@ for (let i = 1; i <= numeroDeJogadores; i++) {
     btnEstadoJogador.innerHTML = 'out';
 
     btnEstadoJogador.addEventListener('click', () => {
-        btnEstadoJogador.classList.toggle('jogador-fora');
+        jogadores[i].situacao = !jogadores[i].situacao;
+
+        if (jogadores[i].situacao == false) {
+            btnEstadoJogador.classList.add('jogador-fora');
+        } else {
+            btnEstadoJogador.classList.remove('jogador-fora');
+        }
     });
 
     if (i%2 ==0) {
