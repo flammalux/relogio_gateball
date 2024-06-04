@@ -4,9 +4,15 @@ class Jogador {
         this.numeroJogador = numero;
         this.pontuacaoJogador = 0;
         this.avancoJogador = 0;
-        this.situacaoJogador = 0;
-        this.timeJogador = 0;
+        this.situacaoJogador = true;
+        this.timeJogador = "";
     }
+    /**
+     * @param {boolean} situacao
+     */
+    get situacao () {return this.situacaoJogador;}
+
+    set situacao (situacao) {this.situacaoJogador = situacao;}
 
     AumentaPontuacao() {
         if(this.pontuacaoJogador < 5) {
@@ -15,8 +21,6 @@ class Jogador {
                 this.pontuacaoJogador = 5;
             }
             this.avancoJogador += 1;
-        }else {
-            console.log("Valor máximo de pontuação obtido");
         }
         return;
     }
@@ -28,8 +32,6 @@ class Jogador {
                 this.pontuacaoJogador = 3;
             }
             this.avancoJogador -= 1;
-        }else {
-            console.log("Valor mínimo de pontuação obtido");
         }
         return;
     }
