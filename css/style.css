@@ -7,13 +7,14 @@
     --cor-vermelho-escuro: #581a1a;
     --cor-vermelho-claro: #af1414;
     --cor-verde: #00ff00;
+    --cor-verde-marinho: seagreen;
     --cor-amarelo-claro: #beb932;
     --cor-amarelo-escuro: #666312;
     --cor-branco: #f0f0f0;
     --cor-cinza-claro: #aaaaaa;
     --cor-cinza-escuro: #444444;
     --cor-preto: #0c0c0c;
-    --curvatura-da-borda: 10px;
+    --curvatura-da-borda: 8px;
 }
 
 body {
@@ -47,14 +48,14 @@ body {
 }
 
 .time-vermelho_nome {
-    grid-area: 2 / 3 / 3 / 8;
+    grid-area: 2 / 4 / 3 / 8;
     background-color: var(--cor-vermelho-escuro);
     margin: 1vw 1vw 0 1vw;
     border-radius:
-    var(--curvatura-da-borda) 
-    var(--curvatura-da-borda) 
-    0 
-    0;
+        var(--curvatura-da-borda) 
+        var(--curvatura-da-borda) 
+        0 
+        0;
     color: var(--cor-branco);
 }
 
@@ -64,14 +65,14 @@ body {
 }
 
 .time-branco_nome {
-    grid-area: 3 / 3 / 4 / 8;
+    grid-area: 3 / 4 / 4 / 8;
     background-color: var(--cor-cinza-claro);
     margin: 0 1vw 1vw 1vw;
     border-radius:
-    0
-    0
-    var(--curvatura-da-borda)
-    var(--curvatura-da-borda);
+        0
+        0
+        var(--curvatura-da-borda)
+        var(--curvatura-da-borda);
     color: var(--cor-vermelho-claro);
 }
 
@@ -89,6 +90,48 @@ body {
 
 #contador-regressivo.ativo {
     color: var(--cor-amarelo-claro);
+}
+
+.contador_botoes {
+    grid-area: 2 / 3 / 4 / 4;
+    margin: 1vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: stretch;
+    row-gap: 0.5vw;
+    column-gap: 0.5vw;
+    color: var(--cor-cinza-claro);
+    font-weight: bold;
+    }
+    
+.aumenta_tempo {
+    grid-row: 1 / 2;
+}
+    
+.diminui_tempo {
+    grid-row: 2 / 3;
+}
+
+.aumenta_tempo,
+.diminui_tempo {
+    grid-column: 1 / 2;
+    width: 100%;
+    background-color: var(--cor-preto);
+    border-radius: var(--curvatura-da-borda);
+}
+
+.reseta_tempo {
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    width: 100%;
+    background-color: var(--cor-verde-marinho);
+    border-radius: var(--curvatura-da-borda);
+    font-size: 0.75em;
+    color: var(--cor-branco);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
 
 .contador-regressivo_wrapper,
@@ -160,6 +203,7 @@ body {
 .aumenta_pontuacao,
 .diminui_pontuacao {
     flex-grow: 1;
+    font-weight: bold;
     border-radius: var(--curvatura-da-borda);
 }
 
