@@ -35,6 +35,11 @@ body {
     background-color: var(--cor-vermelho-claro);
 }
 
+.fundo-branco {
+    grid-area: 3 / 1 / 5 / 8;
+    background-color: var(--cor-branco);
+}
+
 .time-vermelho_pontuacao {grid-area: 1 / 6 / 2 / 8;}
 .time-branco_pontuacao   {grid-area: 4 / 6 / 5 / 8;}
 
@@ -48,7 +53,7 @@ body {
 }
 
 .time-vermelho_nome {
-    grid-area: 2 / 4 / 3 / 8;
+    grid-row: 2 / 3;
     background-color: var(--cor-vermelho-escuro);
     margin: 1vw 1vw 0 1vw;
     border-radius:
@@ -59,13 +64,8 @@ body {
     color: var(--cor-branco);
 }
 
-.fundo-branco {
-    grid-area: 3 / 1 / 5 / 8;
-    background-color: var(--cor-branco);
-}
-
 .time-branco_nome {
-    grid-area: 3 / 4 / 4 / 8;
+    grid-row: 3 / 4;
     background-color: var(--cor-cinza-claro);
     margin: 0 1vw 1vw 1vw;
     border-radius:
@@ -76,65 +76,45 @@ body {
     color: var(--cor-vermelho-claro);
 }
 
+.time-vermelho_nome,
+.time-branco_nome {
+    grid-column: 3 / 8;
+}
+
 .contador-regressivo_wrapper {
     grid-area: 2 / 1 / 4 / 3;
-    background-color: var(--cor-preto);
     margin: 1vw;
+    padding: 1vw;
+    background-color: var(--cor-preto);
     border-radius: var(--curvatura-da-borda);
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 0.8fr 0.8fr 1.4fr;
+    row-gap: 1vw;
+    column-gap: 1vw;
 }
 
 #contador-regressivo {
+    grid-area: 1 / 1 / 2 / 4;
     color: var(--cor-amarelo-escuro);
-    font-size: 2.2em;
+    font-size: 2em;
 }
 
 #contador-regressivo.ativo {
     color: var(--cor-amarelo-claro);
 }
 
-.contador_botoes {
-    grid-area: 2 / 3 / 4 / 4;
-    margin: 1vw;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: stretch;
-    row-gap: 0.5vw;
-    column-gap: 0.5vw;
-    color: var(--cor-cinza-claro);
-    font-weight: bold;
-    }
-    
-.aumenta_tempo {
-    grid-row: 1 / 2;
-}
-    
-.diminui_tempo {
-    grid-row: 2 / 3;
-}
-
 .aumenta_tempo,
-.diminui_tempo {
-    grid-column: 1 / 2;
-    width: 100%;
-    background-color: var(--cor-preto);
-    border-radius: var(--curvatura-da-borda);
-}
-
+.diminui_tempo,
 .reseta_tempo {
-    grid-row: 1 / 3;
-    grid-column: 2 / 3;
     width: 100%;
-    background-color: var(--cor-verde-marinho);
+    border: 1px solid var(--cor-amarelo-escuro);
     border-radius: var(--curvatura-da-borda);
+    color: var(--cor-amarelo-escuro);
     font-size: 0.75em;
-    color: var(--cor-branco);
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    font-weight: bold;
 }
 
-.contador-regressivo_wrapper,
 .time-vermelho_pontuacao,
 .time-branco_pontuacao,
 .time-vermelho_nome,
