@@ -3,34 +3,26 @@ const temporizador = document.querySelector('#contador-regressivo');
 const numeroDeJogadores = 10;
 const jogadores = new Array();
 
-let tempoDaPartida = 1;
+let tempoDaPartida = 0.15;
 
-// window.customElements.define('elemento-contador', ContadorRegressivo);
-const contador = new ContadorRegressivo(tempoDaPartida);
+const contador = new ContadorRegressivo(tempoDaPartida, temporizador);
 
-// const mutationObserver = new MutationObserver ((alteracoes) => {
-//     console.log(alteracoes);
-// });
-
-// mutationObserver.observe(contador, { attributes: true, subtree: true })
-
-temporizador.innerHTML = `${tempoDaPartida}:00`;
+temporizador.innerHTML = contador.contagem;
 
 temporizador.addEventListener('click', () => {
+    if (contador.fim == true) {
+        contador.ResetaContagem();
+        temporizador.innerHTML = contador.contagem;
+    }
+    
     temporizador.classList.toggle('ativo');
     
     if (temporizador.classList.contains('ativo')) {
-        contador.IniciaContagem()
-        
-        if (contador.fim == true) {
-            contador.ResetaContagem();
-            temporizador.classList.toggle('ativo');
-        }
+        contador.IniciaContagem();
     }else {
         contador.PausaContagem();
     }
 });
-
 
 for (let i = 1; i <= numeroDeJogadores; i++) {
     //este laço cria os jogadores e as divs desses jogadores
@@ -49,13 +41,16 @@ for (let i = 1; i <= numeroDeJogadores; i++) {
     spanNumeroJogador.setAttribute('class', 'jogador_numero');
     spanNumeroJogador.innerHTML = i;
 
+    // cria a div que mostra a pontuação do jogador
     let divPontuacaoJogador = document.createElement('div');
     divPontuacaoJogador.setAttribute('class', 'jogador_pontuacao');
     divPontuacaoJogador.innerHTML = '0';
 
+    // cria o envólucro dos marcadores do avanço do jogador
     let divAvancoJogadorWrapper = document.createElement('div');
     divAvancoJogadorWrapper.setAttribute('class', 'jogador_avanco-wrapper');
 
+    // este laço cria os marcadores do avanço do jogador
     for (let i = 0; i < 4; i++) {
         let divAvancoJogador = document.createElement('div');
         divAvancoJogador.setAttribute('class', 'jogador_avanco');
@@ -64,32 +59,40 @@ for (let i = 1; i <= numeroDeJogadores; i++) {
         divAvancoJogadorWrapper.appendChild(divAvancoJogador);
     }
 
+    // cria o envólucro dos botôes de aumentar e diminuir a pontuação 
     let divBotoesJogador = document.createElement('div');
     divBotoesJogador.setAttribute('class', 'jogador_botoes');
 
+    // cria o botão de aumentar pontuação
     let btnAumentaPontuacao = document.createElement('button');
     btnAumentaPontuacao.setAttribute('class', 'aumenta_pontuacao');
     btnAumentaPontuacao.innerHTML = '+';
 
+    // cria o botão de diminuir pontuação
     let btnDiminuiPontuacao = document.createElement('button');
     btnDiminuiPontuacao.setAttribute('class', 'diminui_pontuacao');
     btnDiminuiPontuacao.innerHTML = '-';
     
+    // cria o evento de click do botão que aumenta pontuação
     btnAumentaPontuacao.addEventListener('click', () => {
         GanhaPontuacao(jogadores[(i-1)]);
     });
-
+        
+    // cria o evento de click do botão que diminui pontuação
     btnDiminuiPontuacao.addEventListener('click', () => {
         PerdePontuacao(jogadores[(i-1)]);
     });
     
+    // coloca os botões de aumentar e diminuir pontuação como filhos do invólucro
     divBotoesJogador.appendChild(btnAumentaPontuacao);
     divBotoesJogador.appendChild(btnDiminuiPontuacao);
     
+    // cria o botão da situação do jogador (in/out)
     let btnEstadoJogador = document.createElement('button');
     btnEstadoJogador.setAttribute('class', 'jogador_estado');
     btnEstadoJogador.innerHTML = 'out';
 
+    // cria o evento de click do botão que mostra o estado do jogador
     btnEstadoJogador.addEventListener('click', () => {
         jogadores[i].situacao = !jogadores[i].situacao;
 
@@ -208,7 +211,6 @@ function AtualizaPontuacaoTotal() {
     pontucaoVermelho.innerHTML = pontuacaoTimeVermelho;
     pontucaoBranco.innerHTML = pontuacaoTimeBranco;
 }
-
 
 // controla o nome dos times
 // controla o fim de jogo
