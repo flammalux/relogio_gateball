@@ -18,11 +18,11 @@ class ContadorRegressivo {
         this.#elementoAlterado = alterar;
     }
 
-    get tempo () {return this.#tempo;}
+    get tempo      () {return this.#tempo;}
     get tempoTexto () {return this.#MostraTempo(this.#tempo);}
-    get contagem () {return this.#tempoDecorridoEmTexto;}
-    get pausa () {return this.#pausado;}
-    get fim () {return this.#finalizado;}
+    get contagem   () {return this.#tempoDecorridoEmTexto;}
+    get pausa      () {return this.#pausado;}
+    get fim        () {return this.#finalizado;}
 
     set tempo (tempo) {this.#tempo = this.#MinutosParaSegundos(tempo);}
 

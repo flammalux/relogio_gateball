@@ -11,7 +11,7 @@
     <script src="./javascript/ContadorRegressivo.js"></script>
 </head>
 <body>
-    <div id="relogioGateball">
+    <div id="relogioGateball" data-vis_relogio="oculto">
         <span class="fundo-vermelho"></span>
         <div class="time-vermelho_pontuacao">0</div>
         <div class="time-vermelho_nome">Equipe Vermelha</div>
@@ -22,11 +22,11 @@
         
         <div class="contador-regressivo_wrapper">
             <button id="contador-regressivo"></button>
-            <button class="aumenta_tempo">+</button>
             <button class="diminui_tempo">-</button>
+            <button class="aumenta_tempo">+</button>
             <button class="reseta_tempo">zerar</button>
         </div>
-
+        <button id="btn_visibilidade_relogio"></button>
     </div>
 </body>
 </html>

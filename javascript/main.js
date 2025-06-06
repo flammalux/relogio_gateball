@@ -1,21 +1,21 @@
-const relogioGateball   = document.querySelector('#relogioGateball');
-const pontucaoVermelho  = document.querySelector('.time-vermelho_pontuacao');
-const pontucaoBranco    = document.querySelector('.time-branco_pontuacao');
+const relogioGateball    = document.querySelector('#relogioGateball');
+const pontucaoVermelho   = document.querySelector('.time-vermelho_pontuacao');
+const pontucaoBranco     = document.querySelector('.time-branco_pontuacao');
 
-const temporizador      = document.querySelector('#contador-regressivo');
-const btnAumentaTempo   = document.querySelector('.aumenta_tempo');
-const btnDiminuiTempo   = document.querySelector('.diminui_tempo');
-const btnResetaTempo    = document.querySelector('.reseta_tempo');
-const tempoIncremento   = 5;
+const temporizador       = document.querySelector('#contador-regressivo');
+const btnAumentaTempo    = document.querySelector('.aumenta_tempo');
+const btnDiminuiTempo    = document.querySelector('.diminui_tempo');
+const btnResetaTempo     = document.querySelector('.reseta_tempo');
+const tempoIncremento    = 5;
 const tempoPartidaMaximo = 30;
 const tempoPartidaMinimo = 20;
 const tempo1aAdvertencia = 15;
 const tempo2aAdvertencia = 10;
 const tempo3aAdvertencia = 5;
-let tempoPartida = 30;
+let tempoPartida         = 30;
 
-const jogadores = new Array();
-const numeroDeJogadores = 10;
+const jogadores          = new Array();
+const numeroDeJogadores  = 10;
 
 const contador = new ContadorRegressivo(tempoPartida, temporizador);
 
@@ -136,8 +136,8 @@ function CriaJogadores () {
         });
         
         // coloca os botões de aumentar e diminuir pontuação como filhos do invólucro
-        divBotoesJogador.appendChild(btnAumentaPontuacao);
         divBotoesJogador.appendChild(btnDiminuiPontuacao);
+        divBotoesJogador.appendChild(btnAumentaPontuacao);
         
         // cria o botão da situação do jogador (in/out)
         let btnEstadoJogador = document.createElement('button');
@@ -255,6 +255,16 @@ function AtualizaPontuacaoTotal() {
     pontucaoVermelho.innerHTML = pontuacaoTimeVermelho;
     pontucaoBranco.innerHTML = pontuacaoTimeBranco;
 }
+
+const btnVisibilidadeRelogio = document.querySelector('#btn_visibilidade_relogio');
+
+btnVisibilidadeRelogio.addEventListener('click', () => {
+    if (relogioGateball.getAttribute('data-vis_relogio') === "visivel") {
+        relogioGateball.setAttribute('data-vis_relogio', "oculto");
+    } else {
+        relogioGateball.setAttribute('data-vis_relogio', "visivel");
+    }
+})
 
 // controla o nome dos times
 // controla o fim de jogo

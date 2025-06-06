@@ -16,12 +16,12 @@ class Jogador {
         this.#timeJogador = "";
     }
     // GETTERS
-    get id () {return this.#idJogador;}
-    get numero () {return this.#numeroJogador;}
+    get id        () {return this.#idJogador;}
+    get numero    () {return this.#numeroJogador;}
     get pontuacao () {return this.#pontuacaoJogador;}
-    get avanco () {return this.#avancoJogador;}
-    get situacao () {return this.#situacaoJogador;}
-    get time () {return this.#timeJogador;}
+    get avanco    () {return this.#avancoJogador;}
+    get situacao  () {return this.#situacaoJogador;}
+    get time      () {return this.#timeJogador;}
 
     // SETTERS
     /**

@@ -7,25 +7,39 @@
     --cor-vermelho-escuro: #581a1a;
     --cor-vermelho-claro: #af1414;
     --cor-verde: #00ff00;
-    --cor-verde-marinho: seagreen;
     --cor-amarelo-claro: #beb932;
     --cor-amarelo-escuro: #666312;
-    --cor-branco: #f0f0f0;
-    --cor-cinza-claro: #aaaaaa;
-    --cor-cinza-escuro: #444444;
-    --cor-preto: #0c0c0c;
+    --cor-branco: rgb(240, 240, 240);
+    --cor-cinza-claro: rgb(170, 170, 170);
+    --cor-cinza-escuro: rgb(70, 70, 70);
+    --cor-cinza-escurao: rgb(40, 40, 40);
+    --cor-preto: rgb(10, 10, 10);
     --curvatura-da-borda: 5px;
 }
 
 body {
+    width: 100vw;
+    height: 100vh;
     color: var(--cor-preto);
     font-size: 100%;
 }
 
+button {
+    background-color: var(--cor-cinza-escurao);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--curvatura-da-borda);
+    color: var(--cor-cinza-claro);
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
 #relogioGateball {
     display: grid;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
+    min-width: 480px;
+    min-height: 320px;
+    /* aspect-ratio: 3 / 2; */
     grid-template-columns: repeat(5, 1.1fr) 0.75fr 0.75fr;
     grid-template-rows: 1fr 13% 13% 1fr;
 }
@@ -78,7 +92,7 @@ body {
 
 .time-vermelho_nome,
 .time-branco_nome {
-    grid-column: 3 / 8;
+    grid-column: 3 / 7;
 }
 
 .contador-regressivo_wrapper {
@@ -96,6 +110,8 @@ body {
 
 #contador-regressivo {
     grid-area: 1 / 1 / 2 / 4;
+    background-color: unset;
+    border: unset;
     color: var(--cor-amarelo-escuro);
     font-size: 2em;
 }
@@ -108,7 +124,8 @@ body {
 .diminui_tempo,
 .reseta_tempo {
     width: 100%;
-    border: 1px solid var(--cor-amarelo-escuro);
+    background-color: unset;
+    border-color: var(--cor-amarelo-escuro);
     border-radius: var(--curvatura-da-borda);
     color: var(--cor-amarelo-escuro);
     font-size: 0.75em;
@@ -118,11 +135,24 @@ body {
 .time-vermelho_pontuacao,
 .time-branco_pontuacao,
 .time-vermelho_nome,
-.time-branco_nome {
+.time-branco_nome,
+#btn_visibilidade_relogio {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1vw;
+}
+
+#btn_visibilidade_relogio {
+    grid-area: 2 / 7 / 4 / 8;
+    height: 60%;
+    margin: 1vw;
+    align-self: center;
+    font-size: 0.5em;
+}
+
+#btn_visibilidade_relogio::after {
+    content: 'Oculta Relógio';
 }
 
 #jogador-1 {grid-area: 1 / 1 / 2 / 2;}
@@ -193,7 +223,7 @@ body {
     width: 50%;
     font-size: 0.8em;
     font-weight: bold;
-    border-radius: var(--curvatura-da-borda);
+    border: unset;
 }
 
 .time-vermelho_jogador .aumenta_pontuacao, 
@@ -272,6 +302,7 @@ body {
     font-size: 1em;
     color: var(--cor-estado-jogador);
     background-color: var(--cor-preto);
+    border: unset;
 }
 
 .time-vermelho_jogador .jogador_estado {
@@ -294,3 +325,33 @@ body {
 #contador-regressivo {
     font-family: digital;
 }
+
+/* quando o elemento cujo [data-vis_relogio] for 'oculto',
+   este seletor vai aplicar o estilo abaixo para todos os
+   elementos filhos deste elemento, exceto aqueles cujo
+   id é #btn_visibilidade_relogio
+   */
+[data-vis_relogio = 'oculto'] *:not(#btn_visibilidade_relogio) {
+    display: none;
+}
+
+[data-vis_relogio = 'oculto'] {
+    display: block;
+}
+
+[data-vis_relogio = 'oculto'] #btn_visibilidade_relogio {
+    width: 50px;
+    height: 40px;
+    margin: 0;
+    position: absolute;
+    top:1vw;
+    left: 1vw;
+}
+
+[data-vis_relogio = 'oculto'] #btn_visibilidade_relogio::after {
+    content: 'Mostra Relógio';
+}
+
+.escondido {
+    display: none;
+} 
